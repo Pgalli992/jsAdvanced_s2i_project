@@ -18,7 +18,6 @@ const getNewsInfo = async function () {
     );
     const data = await res.json();
     console.log(data);
-    console.log("Hello world");
   } catch (err) {
     console.error(err);
   }
