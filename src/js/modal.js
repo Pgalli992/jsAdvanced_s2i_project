@@ -1,9 +1,10 @@
-const createNewsObj = function (data) {
-  return {
+export const createNewsObj = function (data) {
+  const newsObj = {
     author: data.by,
     id: data.id,
-    time: time.data,
+    time: data.time,
     title: data.title,
     url: data.url,
   };
+  console.log(newsObj);
 };

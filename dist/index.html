@@ -2,10 +2,46 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Webpack App</title>
-  <script defer src="main.js"></script></head>
-  <body>
-    <h1 class="text-3xl text-red-500">Hello world!</h1>
-    <h2>Tip: Check your console</h2>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="shortcut icon" href="src/img/favicon.png" type="image/x-icon" />
+
+    <link href="./src/css/output.css" rel="stylesheet" />
+    <script type="module" src="src/js/index.js"></script>
+
+    <title>Hacker News</title>
+  <script defer src="bundle.js"></script><link href="main.css" rel="stylesheet"></head>
+  <body
+    class="max-w-[120rem] min-h-content bg-slate-500 mx-auto pb-8 caret-transparent"
+  >
+    <header
+      class="flex gap-2 items-center justify-center border-b-2 border-gray-900 bg-slate-50 py-4 px-8"
+    >
+      <img
+        src="./src/img/hacker_logo.png"
+        alt="Hacker Logo"
+        class="w-12 h-auto"
+      />
+      <h1 class="text-6xl text-gray-900 font-blackops">Hacker News</h1>
+    </header>
+    <main
+      class="w-11/12 min-h-screen rounded-xl flex flex-col gap-6 mx-auto mt-8"
+    >
+      <!-- <div class="flex flex-col items-center bg-gray-900 text-slate-50 py-4">
+        <h1 class="text-xl font-bold">
+          NSO vs. Citizen Lab: U.S. Court Battles over Pegasus Spyware
+          Investigations
+        </h1>
+        <button>Open</button>
+        <span>10/05/2024 - 16:28:29</span>
+      </div> -->
+    </main>
   </body>
 </html>

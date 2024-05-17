@@ -1,4 +1,4 @@
-import * as modal from "./modal.js";
+import { createNewsObj } from "./modal.js";
 
 const getNews = async function () {
   try {
@@ -11,19 +11,22 @@ const getNews = async function () {
     console.error(err);
   }
 };
-const getNewsInfo = async function () {
+const getNewsInfo = async function (id) {
   try {
     const res = await fetch(
-      "https://hacker-news.firebaseio.com/v0/item/40352258.json"
+      `https://hacker-news.firebaseio.com/v0/item/${id}.json`
     );
     const data = await res.json();
+    createNewsObj(data);
     console.log(data);
   } catch (err) {
     console.error(err);
   }
 };
 
-getNews();
-getNewsInfo();
+const renderNews = function (obj) {};
 
-const loadNews = async function () {};
+getNews();
+getNewsInfo(40387195);
+
+const loadNews = function () {};
