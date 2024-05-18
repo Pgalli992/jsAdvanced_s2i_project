@@ -10,12 +10,6 @@ const getNews = async function () {
 
     chooseNews(data);
     renderNews(state.results);
-    chooseNews(data);
-    renderNews(state.results);
-    chooseNews(data);
-    renderNews(state.results);
-    chooseNews(data);
-    renderNews(state.results);
   } catch (err) {
     console.error(err);
   }
@@ -29,6 +23,7 @@ const chooseNews = function (data) {
 };
 
 const renderNews = function (array) {
+  // mapping only the last 10 ids to reduce the numbers of calls.
   array.slice(-10).map(async (id) => {
     console.log("call");
     const res = await fetch(

@@ -23,7 +23,7 @@
   >
     <!-- sadasdasdsas-->
     <header
-      class="flex gap-2 items-center justify-center border-b-2 border-gray-900 bg-slate-50 py-4 px-8"
+      class="max-w-[120rem] w-full flex gap-2 items-center justify-center border-b-2 border-gray-900 bg-slate-50 py-4 px-8 fixed top-0 z-10"
     >
       <img
         src="./src/img/hacker_logo.png"
@@ -31,9 +31,14 @@
         class="w-12 h-auto"
       />
       <h1 class="text-6xl text-gray-900 font-blackops">Hacker News</h1>
+      <button
+        class="bg-blue-400 text-xl text-gray-900 font-bold border-4 border-gray-900 rounded-xl py-4 px-8 absolute right-80"
+      >
+        <span class="">Load more...</span>
+      </button>
     </header>
     <main
-      class="result__section w-11/12 min-h-screen rounded-xl flex flex-col gap-6 mx-auto mt-8 relative"
+      class="result__section w-11/12 min-h-screen rounded-xl flex flex-col gap-6 mx-auto mt-32 relative"
     >
       <!-- <div
         class="flex flex-col items-center relative bg-gray-900 text-slate-50 py-4"
@@ -51,12 +56,5 @@
         </button>
       </div> -->
     </main>
-    <section class="w-full flex justify-center">
-      <button
-        class="bg-slate-50 text-xl text-gray-900 font-bold rounded-xl py-4 px-8"
-      >
-        <span class="">Load more...</span>
-      </button>
-    </section>
   </body>
 </html>
