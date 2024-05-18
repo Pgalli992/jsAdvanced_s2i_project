@@ -9,9 +9,11 @@ const getNews = async function () {
     const data = await res.json();
 
     chooseNews(data);
+    renderNews(state.results);
     chooseNews(data);
+    renderNews(state.results);
     chooseNews(data);
-    chooseNews(data);
+    renderNews(state.results);
     chooseNews(data);
     renderNews(state.results);
   } catch (err) {
@@ -21,15 +23,14 @@ const getNews = async function () {
 
 const chooseNews = function (data) {
   const start = state.results.length;
-  console.log(start);
   const end = start + 10;
 
   state.results.push(...data.slice(start, end));
-  console.log(state.results);
 };
 
 const renderNews = function (array) {
-  array.map(async (id) => {
+  array.slice(-10).map(async (id) => {
+    console.log("call");
     const res = await fetch(
       `https://hacker-news.firebaseio.com/v0/item/${id}.json`
     );
