@@ -1,9 +1,11 @@
 import { state, createObj, createNewsMarkup } from "./model.js";
 
+const btnLoadMore = document.querySelector(".btn__load_more");
+
 // Getting new sroties ID
 const getNews = async function () {
   try {
-    const res = await fetch(
+    const res = axios.get(
       "https://hacker-news.firebaseio.com/v0/newstories.json"
     );
     const data = await res.json();
@@ -56,3 +58,7 @@ const getNewsInfo = async function (id) {
 getNews();
 
 const loadNews = function () {};
+
+btnLoadMore.addEventListener("click", function () {
+  getNews();
+});
