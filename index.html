@@ -23,7 +23,7 @@
     <title>Hacker News</title>
   </head>
   <body
-    class="max-w-[120rem] min-h-content bg-slate-500 mx-auto pb-20 caret-transparent"
+    class="max-w-[120rem] min-h-content bg-slate-500 mx-auto pb-28 caret-transparent"
   >
     <!-- sadasdasdsas-->
     <header
@@ -36,30 +36,23 @@
       />
       <h1 class="text-6xl text-gray-900 font-blackops">Hacker News</h1>
       <button
-        class="btn__load_more bg-blue-400 text-xl text-gray-900 font-bold border-4 border-gray-900 rounded-xl py-4 px-8 absolute right-80"
+        class="btn__load_more w-[11.65rem] h-[4.4rem] bg-blue-400 text-xl border-4 border-gray-900 rounded-xl py-2 px-5 absolute right-80 duration-150 hover:bg-blue-500 active:scale-95 active:shadow-2xl"
       >
-        <span class="">Load more...</span>
+        <div class="load__container flex flex-col justify-end">
+          <span class="text-gray-900 font-bold">Load more...</span>
+          <span class="text-xs"
+            >Loaded News:
+            <span class="loaded__news font-bold"></span>
+          </span>
+        </div>
+        <div class="spinner__container animate-spin hidden">
+          <ion-icon name="reload-outline"></ion-icon>
+        </div>
       </button>
     </header>
     <main
       class="result__section w-11/12 min-h-screen rounded-xl flex flex-col gap-6 mx-auto mt-32 relative"
-    >
-      <!-- <div
-        class="flex flex-col items-center relative bg-gray-900 text-slate-50 py-4"
-      >
-        <h1 class="text-xl font-bold">
-          NSO vs. Citizen Lab: U.S. Court Battles over Pegasus Spyware
-          Investigations
-        </h1>
-        <span class="my-2">By: Author</span>
-        <span>10/05/2024 - 16:28:29</span>
-        <button
-          class="w-min absolute text-gray-900 font-bold bg-slate-50 rounded-xl shadow-[0_25px_50px_-12px_rgba(255,255,255,.4)] py-2 px-4 justify-self-center duration-150 right-3 top-1/2 -translate-y-1/2 hover:-translate-y-7 active:-translate-y-1/2"
-        >
-          Open
-        </button>
-      </div> -->
-    </main>
+    ></main>
     <footer
       class="w-full h-10 mt-4 fixed bottom-0 bg-slate-500 flex justify-center items-center gap-3"
     >

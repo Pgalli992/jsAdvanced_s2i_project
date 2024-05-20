@@ -1,20 +1,30 @@
 import { state, createObj, createNewsMarkup } from "./model.js";
 
 const btnLoadMore = document.querySelector(".btn__load_more");
+const loadedNews = document.querySelector(".loaded__news");
+const loadContainer = document.querySelector(".load__container");
+const spinnerContainer = document.querySelector(".spinner__container");
 
 // Getting new sroties ID
 const getNews = async function () {
   try {
+    renderSpinner();
     const res = await fetch(
       "https://hacker-news.firebaseio.com/v0/newstories.json"
     );
     const data = await res.json();
-
+    renderSpinner();
     chooseNews(data);
     renderNews(state.results);
+    loadedNews.textContent = `${state.results.length}`;
   } catch (err) {
     console.error(err);
   }
+};
+
+const renderSpinner = function () {
+  loadContainer.classList.toggle("hidden");
+  spinnerContainer.classList.toggle("hidden");
 };
 
 const chooseNews = function (data) {
