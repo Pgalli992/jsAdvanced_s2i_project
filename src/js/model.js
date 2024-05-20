@@ -29,7 +29,6 @@ export const createObj = function (data) {
 
 // Creating markup to render results
 export const createNewsMarkup = function (data) {
-  console.log(data.url);
   const markup = `<div
   class="flex flex-col items-center relative bg-gray-900 text-slate-50 py-4"
 >

@@ -5,7 +5,7 @@ const btnLoadMore = document.querySelector(".btn__load_more");
 // Getting new sroties ID
 const getNews = async function () {
   try {
-    const res = axios.get(
+    const res = await fetch(
       "https://hacker-news.firebaseio.com/v0/newstories.json"
     );
     const data = await res.json();
@@ -27,7 +27,6 @@ const chooseNews = function (data) {
 const renderNews = function (array) {
   // mapping only the last 10 ids to reduce the numbers of calls.
   array.slice(-10).map(async (id) => {
-    console.log("call");
     const res = await fetch(
       `https://hacker-news.firebaseio.com/v0/item/${id}.json`
     );
