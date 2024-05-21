@@ -12,6 +12,7 @@ const getNews = async function () {
     const res = await fetch(
       "https://hacker-news.firebaseio.com/v0/newstories.json"
     );
+    if (!res.ok) throw new Error("Failed to fetch news stories");
     const data = await res.json();
     renderSpinner();
     chooseNews(data);
@@ -66,8 +67,10 @@ const getNewsInfo = async function (id) {
 
 getNews();
 
-const loadNews = function () {};
-
-btnLoadMore.addEventListener("click", function () {
+btnLoadMore.addEventListener("click", function (e) {
+  e.preventDefault();
   getNews();
+  // Page scroll to last news.
+  const id = `n${state.results.at(-1)}`;
+  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
 });
