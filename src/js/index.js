@@ -14,8 +14,6 @@ const getNews = async function () {
   }
 };
 
-getNews();
-
 model.btnLoadMore.addEventListener("click", function (e) {
   e.preventDefault();
   getNews();
@@ -23,3 +21,5 @@ model.btnLoadMore.addEventListener("click", function (e) {
   const id = `n${model.state.results.at(-1)}`;
   document.getElementById(id).scrollIntoView({ behavior: "smooth" });
 });
+
+getNews();

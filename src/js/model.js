@@ -38,6 +38,15 @@ export const renderSpinner = function () {
   spinnerContainer.classList.toggle("hidden");
 };
 
+// Timeout to race witch get callexport
+const timeout = function (s) {
+  return new Promise(function (_, reject) {
+    setTimeout(function () {
+      reject(new Error(`Request took too long! Timeout after ${s} second`));
+    }, s * 1000);
+  });
+};
+
 // Create markup to render results
 export const createNewsMarkup = function (data) {
   const markup = `<div id="n${data.id}"
@@ -96,9 +105,11 @@ export const renderNews = function (array) {
   }
   // mapping only the last 10 ids to reduce the numbers of calls.
   array.slice(-10).map(async (id) => {
-    const res = await fetch(
-      `https://hacker-news.firebaseio.com/v0/item/${id}.json`
-    );
+    // Setting timeout for request
+    const res = await Promise.race([
+      fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`),
+      timeout(10),
+    ]);
     const data = await res.json();
     // Filling state object with data
     state.info = createObj(data);
