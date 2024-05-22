@@ -1,5 +1,10 @@
 const resultSection = document.querySelector(".result__section");
 
+const loadContainer = document.querySelector(".load__container");
+const spinnerContainer = document.querySelector(".spinner__container");
+export const btnLoadMore = document.querySelector(".btn__load_more");
+export const loadedNews = document.querySelector(".loaded__news");
+
 export const state = {
   info: {},
   page: 1,
@@ -15,8 +20,8 @@ const timeConverter = function (timeInMS) {
   return `[${date} - ${time}]`;
 };
 
-// Creatingg new objecy to store result information
-export const createObj = function (data) {
+// Creating new objecy to store result information
+const createObj = function (data) {
   const info = data;
   return {
     author: info.by,
@@ -27,7 +32,13 @@ export const createObj = function (data) {
   };
 };
 
-// Creating markup to render results
+// Loading spinner
+export const renderSpinner = function () {
+  loadContainer.classList.toggle("hidden");
+  spinnerContainer.classList.toggle("hidden");
+};
+
+// Create markup to render results
 export const createNewsMarkup = function (data) {
   const markup = `<div id="n${data.id}"
   class="flex flex-col items-center relative bg-gray-900 text-slate-50 py-4"
@@ -53,6 +64,17 @@ export const createNewsMarkup = function (data) {
   resultSection.insertAdjacentHTML("beforeend", markup);
 };
 
+// Ask for 500 top new stories
+export const newStories = async function () {
+  const res = await fetch(
+    "https://hacker-news.firebaseio.com/v0/newstories.json"
+  );
+  if (!res.ok) throw new Error("Failed to fetch news stories");
+  const data = await res.json();
+  return data;
+};
+
+// Choose the news to render
 export const chooseNews = function (data) {
   const start = state.results.length;
   const end = start + 10;
@@ -61,7 +83,17 @@ export const chooseNews = function (data) {
   return state;
 };
 
-const renderNews = function (array) {
+// Render news
+export const renderNews = function (array) {
+  // Check if the user is trying to load more than 500 news
+  if (state.results.length === 500) {
+    btnLoadMore.innerHTML = `
+      <span class="text-xl text-gray-900 font-bold">
+        No more news
+      </span>`;
+    btnLoadMore.classList.remove("active:scale-95", "active:shadow-2xl");
+    btnLoadMore.style.backgroundColor = "red";
+  }
   // mapping only the last 10 ids to reduce the numbers of calls.
   array.slice(-10).map(async (id) => {
     const res = await fetch(
