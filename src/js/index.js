@@ -9,8 +9,6 @@ const getNews = async function () {
     model.chooseNews(data);
     model.renderNews(model.state.results);
     model.loadedNews.textContent = `${model.state.results.length}`;
-    console.log(model.state.results.length);
-    console.log(model.state.results);
   } catch (err) {
     console.error(err);
   }
