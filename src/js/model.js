@@ -95,25 +95,26 @@ export const chooseNews = function (data) {
 // Render news
 export const renderNews = function (array) {
   // Check if the user is trying to load more than 500 news
-  if (state.results.length === 500) {
+  if (state.results.length < 500) {
+    // mapping only the last 10 ids to reduce the numbers of calls.
+    array.slice(-10).map(async (id) => {
+      // Setting timeout for request
+      const res = await Promise.race([
+        fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`),
+        timeout(10),
+      ]);
+      const data = await res.json();
+      // Filling state object with data
+      state.info = createObj(data);
+      // Creating a markup to render the news
+      createNewsMarkup(state.info);
+    });
+  } else {
     btnLoadMore.innerHTML = `
-      <span class="text-xl text-gray-900 font-bold">
-        No more news
-      </span>`;
+        <span class="text-xl text-gray-900 font-bold">
+          No more news
+        </span>`;
     btnLoadMore.classList.remove("active:scale-95", "active:shadow-2xl");
     btnLoadMore.style.backgroundColor = "red";
   }
-  // mapping only the last 10 ids to reduce the numbers of calls.
-  array.slice(-10).map(async (id) => {
-    // Setting timeout for request
-    const res = await Promise.race([
-      fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`),
-      timeout(10),
-    ]);
-    const data = await res.json();
-    // Filling state object with data
-    state.info = createObj(data);
-    // Creating a markup to render the news
-    createNewsMarkup(state.info);
-  });
 };
