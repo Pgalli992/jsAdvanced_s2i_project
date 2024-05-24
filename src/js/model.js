@@ -75,13 +75,17 @@ export const createNewsMarkup = function (data) {
 
 // Ask for 500 top new stories
 export const newStories = async function () {
-  const res = await fetch(
-    "https://hacker-news.firebaseio.com/v0/newstories.json"
-  );
-  if (!res.ok) throw new Error("Failed to fetch news stories");
-  const data = await res.json();
-  return data;
-};
+  try{
+    const res = await axios.get(
+      "https://hacker-news.firebaseio.com/v0/newstories.json"
+    );
+    console.log(res);
+    if (!res) throw new Error("Failed to fetch news stories");
+    const data = res.data
+    return data;
+  }catch(err){
+    console.error(err);};
+  }
 
 // Choose the news to render
 export const chooseNews = function (data) {
@@ -100,10 +104,10 @@ export const renderNews = function (array) {
     array.slice(-10).map(async (id) => {
       // Setting timeout for request
       const res = await Promise.race([
-        fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`),
+        axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`),
         timeout(10),
       ]);
-      const data = await res.json();
+      const data = res.data;
       // Filling state object with data
       state.info = createObj(data);
       // Creating a markup to render the news
