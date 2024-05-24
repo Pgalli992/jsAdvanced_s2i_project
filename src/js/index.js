@@ -10,7 +10,14 @@ const getNews = async function () {
     model.renderNews(model.state.results);
     model.loadedNews.textContent = `${model.state.results.length}`;
   } catch (err) {
-    console.error(err);
+    console.log(err);
+    model.resultSection.innerHTML = `
+    <div class="flex justify-center items center">
+    <p class="font-extrabold text-red-800">
+      Error: ${err}
+    </p>
+  </div>
+    `;
   }
 };
 

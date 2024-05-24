@@ -1,7 +1,8 @@
-const resultSection = document.querySelector(".result__section");
+export const resultSection = document.querySelector(".result__section");
 
 const loadContainer = document.querySelector(".load__container");
 const spinnerContainer = document.querySelector(".spinner__container");
+
 export const btnLoadMore = document.querySelector(".btn__load_more");
 export const loadedNews = document.querySelector(".loaded__news");
 
@@ -75,17 +76,16 @@ export const createNewsMarkup = function (data) {
 
 // Ask for 500 top new stories
 export const newStories = async function () {
-  try{
+  try {
     const res = await axios.get(
       "https://hacker-news.firebaseio.com/v0/newstories.json"
     );
-    console.log(res);
-    if (!res) throw new Error("Failed to fetch news stories");
-    const data = res.data
+    const data = res.data;
     return data;
-  }catch(err){
-    console.error(err);};
+  } catch (err) {
+    throw err;
   }
+};
 
 // Choose the news to render
 export const chooseNews = function (data) {
@@ -101,17 +101,21 @@ export const renderNews = function (array) {
   // Check if the user is trying to load more than 500 news
   if (state.results.length < 500) {
     // mapping only the last 10 ids to reduce the numbers of calls.
-    array.slice(-10).map(async (id) => {
-      // Setting timeout for request
-      const res = await Promise.race([
-        axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`),
-        timeout(10),
-      ]);
-      const data = res.data;
-      // Filling state object with data
-      state.info = createObj(data);
-      // Creating a markup to render the news
-      createNewsMarkup(state.info);
+    array.slice(-10).map(async function (id) {
+      try {
+        // Setting timeout for request
+        const res = await Promise.race([
+          axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`),
+          timeout(10),
+        ]);
+        const data = res.data;
+        // Filling state object with data
+        state.info = createObj(data);
+        // Creating a markup to render the news
+        createNewsMarkup(state.info);
+      } catch (err) {
+        throw err;
+      }
     });
   } else {
     btnLoadMore.innerHTML = `
