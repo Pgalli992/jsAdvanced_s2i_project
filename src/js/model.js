@@ -76,9 +76,7 @@ export const createNewsMarkup = function (data) {
 // Ask for 500 top new stories
 export const newStories = async function () {
   try {
-    const res = await axios.get(
-      "https://hacker-news.firebaseio.com/v0/newstories.json"
-    );
+    const res = await axios.get(`${process.env.API_URL}newstories.json`);
     const data = res.data;
     return data;
   } catch (err) {
@@ -104,7 +102,7 @@ export const renderNews = function (array) {
       try {
         // Setting timeout for request
         const res = await Promise.race([
-          axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`),
+          axios.get(`${process.env.API_URL}item/${id}.json`),
           timeout(process.env.TIMER_SEC),
         ]);
         const data = res.data;

@@ -11,6 +11,8 @@ const stylesHandler = MiniCssExtractPlugin.loader;
 
 const Dotenv = require("dotenv-webpack");
 
+require("dotenv").config({ path: "./.env" });
+
 const config = {
   entry: "./src/js/index.js",
   output: {
@@ -21,6 +23,12 @@ const config = {
     open: true,
     host: "localhost",
   },
+  stats: {
+    assets: true,
+    modules: false,
+    colors: true,
+    entrypoints: false,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "index.html",
@@ -29,6 +37,7 @@ const config = {
     new MiniCssExtractPlugin(),
 
     // Add your plugins here
+
     new Dotenv(),
 
     // Clean dist folder before every build
