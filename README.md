@@ -18,10 +18,13 @@
 
 ## Descrizione
 
+![Screenshot 2024-05-28 alle 01 11 28](https://github.com/Pgalli992/jsAdvanced_s2i_project/assets/106709635/692b7131-9b12-450c-b7ee-f975f9ea73e3)
+
+
 Hacker News è un'applicazione sviluppata per democratizzare la diffusione di informazioni in ambito tech attraverso l'utilizzo dell'omonimo servizio <a href="https://github.com/HackerNews/API">(https://github.com/HackerNews/API).</a><br />
 <br />
 
-![alt text](image.png)
+
 
 L'interfaccia è composta da: <br />
 
