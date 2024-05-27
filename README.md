@@ -29,7 +29,7 @@ Hacker News è un'applicazione sviluppata per democratizzare la diffusione di in
 L'interfaccia è composta da: <br />
 
 - un '_header_' contente il logo dell'applicazione ed un pulsante che permette di caricare 10 notizie alla volta.<br />
-- la sezione '_main_' composta dai risultati rappresentati dalle notizie, di cui vengono evidenziati _titolo_, _autore_, _data e ora_ di pubblicazione e [se dispobile] il _link_ alla risorsa.<br />
+- la sezione '_main_' composta dai risultati rappresentati dalle notizie, di cui vengono evidenziati _titolo_, _autore_, _data e ora_ di pubblicazione e [se disponibile] il _link_ alla risorsa.<br />
 - il '_footer_' in cui è presente il copyright e i link ai social.
 
 <h2>Funzionalità</h2>
