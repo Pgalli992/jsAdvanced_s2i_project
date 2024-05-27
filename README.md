@@ -41,6 +41,7 @@ Per ognuna delle notizie è stato aggiunto, ove presente, un bottone che permett
     ├── README.md
     ├── dist
     │   ├── bundle.js
+    │   ├── bundle.js.LICENSE.txt
     │   ├── img
     │   │   ├── favicon.png
     │   │   └── hacker_logo.png
@@ -63,6 +64,8 @@ Per ognuna delle notizie è stato aggiunto, ove presente, un bottone che permett
     ├── tailwind.config.js
     └── webpack.config.js
 ```
+
+---
 
 ## Getting Started
 
