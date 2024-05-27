@@ -25,11 +25,11 @@ const timeConverter = function (timeInMS) {
 
 // Creating new objecy to store result information
 const createObj = (data) => ({
-  author: data.by,
-  id: data.id,
-  time: timeConverter(data.time),
-  title: data.title,
-  url: data.url,
+  author: data?.by,
+  id: data?.id,
+  time: timeConverter(data?.time),
+  title: data?.title,
+  url: data?.url,
 });
 
 // Loading spinner
@@ -77,7 +77,9 @@ export const createNewsMarkup = function (data) {
 export const newStories = async function () {
   try {
     const res = await axios.get(`${process.env.API_URL}newstories.json`);
+    console.log(`${process.env.API_URL}newstories.json`);
     const data = res.data;
+    console.log(data);
     return data;
   } catch (err) {
     throw err;
@@ -106,7 +108,9 @@ export const renderNews = function (array) {
           timeout(process.env.TIMER_SEC),
         ]);
         const data = res.data;
+        console.log(data);
         // Filling state object with data
+        if (!data) return;
         state.info = createObj(data);
         // Creating a markup to render the news
         createNewsMarkup(state.info);

@@ -40,8 +40,6 @@ const config = {
 
     new Dotenv(),
 
-    // Clean dist folder before every build
-    new CleanWebpackPlugin(),
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
   ],
   module: {
