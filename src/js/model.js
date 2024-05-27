@@ -1,7 +1,9 @@
-export const resultSection = document.querySelector(".result__section");
+import _ from "lodash";
 
 const loadContainer = document.querySelector(".load__container");
 const spinnerContainer = document.querySelector(".spinner__container");
+
+export const resultSection = document.querySelector(".result__section");
 
 export const btnLoadMore = document.querySelector(".btn__load_more");
 export const loadedNews = document.querySelector(".loaded__news");
@@ -22,16 +24,13 @@ const timeConverter = function (timeInMS) {
 };
 
 // Creating new objecy to store result information
-const createObj = function (data) {
-  const info = data;
-  return {
-    author: info.by,
-    id: info.id,
-    time: timeConverter(info.time),
-    title: info.title,
-    url: info.url,
-  };
-};
+const createObj = (data) => ({
+  author: data.by,
+  id: data.id,
+  time: timeConverter(data.time),
+  title: data.title,
+  url: data.url,
+});
 
 // Loading spinner
 export const renderSpinner = function () {
@@ -92,7 +91,7 @@ export const chooseNews = function (data) {
   const start = state.results.length;
   const end = start + 10;
 
-  state.results.push(...data.slice(start, end));
+  state.results.push(..._.slice(data, start, end));
   return state;
 };
 
@@ -100,8 +99,8 @@ export const chooseNews = function (data) {
 export const renderNews = function (array) {
   // Check if the user is trying to load more than 500 news
   if (state.results.length < 500) {
-    // mapping only the last 10 ids to reduce the numbers of calls.
-    array.slice(-10).map(async function (id) {
+    // Mapping only the last 10 ids to reduce the numbers of calls.
+    _.map(_.slice(array, -10), async function (id) {
       try {
         // Setting timeout for request
         const res = await Promise.race([
