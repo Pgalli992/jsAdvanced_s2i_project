@@ -2,6 +2,7 @@
 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const isProduction = process.env.NODE_ENV == "production";
@@ -29,6 +30,9 @@ const config = {
 
     // Add your plugins here
     new Dotenv(),
+
+    // Clean dist folder before every build
+    new CleanWebpackPlugin(),
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
   ],
   module: {
@@ -39,24 +43,14 @@ const config = {
       },
       {
         test: /\.css$/i,
-        use: ["css-loader", "postcss-loader"],
+        use: [stylesHandler, "css-loader", "postcss-loader"],
       },
       {
-        test: /img\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        test: /\.(png|jpg|gif)$/i,
         type: "asset/resource",
-      },
-
-      // Add your rules for custom modules here
-      {
-        test: /\.(svg|png)$/i,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              encoding: false,
-            },
-          },
-        ],
+        generator: {
+          filename: "img/[name][ext]",
+        },
       },
       // Learn more about loaders from https://webpack.js.org/loaders/
     ],

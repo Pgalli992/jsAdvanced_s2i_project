@@ -31,6 +31,10 @@ model.btnLoadMore.addEventListener("click", function (e) {
     getNews();
     // Page scroll to last news.
     const id = `n${model.state.results.at(-1)}`;
+    // Guard class to prevent error: "Cannot read properties of null (reading 'scrollIntoView')""
+    if (!document.getElementById(id)) {
+      return;
+    }
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });
   }
   return;

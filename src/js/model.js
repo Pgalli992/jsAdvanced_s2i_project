@@ -43,7 +43,6 @@ export const renderSpinner = function () {
 const timeout = function (s) {
   return new Promise(function (_, reject) {
     setTimeout(function () {
-      console.log(s);
       reject(new Error(`Request took too long! Timeout after ${s} second`));
     }, s * 1000);
   });
@@ -120,9 +119,16 @@ export const renderNews = function (array) {
     });
   } else {
     btnLoadMore.innerHTML = `
-        <span class="text-xl text-gray-900 font-bold">
-          No more news
-        </span>`;
+        <div class="flex flex-col justify-end">
+          <span class="text-xl text-gray-900 font-bold">
+            No more news
+          </span>
+          <span class="text-xs"
+            >Loaded News:
+            <span class="loaded__news font-bold">500</span>
+          </span>
+        </div>
+      `;
     btnLoadMore.classList.remove("active:scale-95", "active:shadow-2xl");
     btnLoadMore.style.backgroundColor = "red";
   }
