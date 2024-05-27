@@ -10,7 +10,7 @@ export const state = {
   info: {},
   page: 1,
   results: [],
-  resultsPerPage: 10, // RES_PER_PAGE
+  resultsPerPage: process.env.RES_PER_PAGE, // RES_PER_PAGE
 };
 
 // Converting time info (in MS) to a date and time string
@@ -43,6 +43,7 @@ export const renderSpinner = function () {
 const timeout = function (s) {
   return new Promise(function (_, reject) {
     setTimeout(function () {
+      console.log(s);
       reject(new Error(`Request took too long! Timeout after ${s} second`));
     }, s * 1000);
   });
@@ -106,7 +107,7 @@ export const renderNews = function (array) {
         // Setting timeout for request
         const res = await Promise.race([
           axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`),
-          timeout(10),
+          timeout(process.env.TIMER_SEC),
         ]);
         const data = res.data;
         // Filling state object with data

@@ -1,5 +1,9 @@
 import * as model from "./model.js";
 
+import "../css/output.css";
+import "../img/favicon.png";
+import "../img/hacker_logo.png";
+
 // Getting new sroties ID
 const getNews = async function () {
   try {

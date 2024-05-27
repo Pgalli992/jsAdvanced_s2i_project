@@ -39,7 +39,7 @@ const config = {
       },
       {
         test: /\.css$/i,
-        use: [stylesHandler, "css-loader", "postcss-loader"],
+        use: ["css-loader", "postcss-loader"],
       },
       {
         test: /img\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
