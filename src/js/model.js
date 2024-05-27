@@ -50,9 +50,9 @@ const timeout = function (s) {
 // Create markup to render results
 export const createNewsMarkup = function (data) {
   const markup = `<div id="n${data.id}"
-  class="flex flex-col items-center relative bg-gray-900 text-slate-50 py-4"
+  class="text-xs flex flex-col items-center relative bg-gray-900 text-slate-50 py-4 px-2 md:text-xl"
 >
-  <h1 class="text-xl font-bold">
+  <h1 class="w-full font-bold text-center truncate">
     ${data.title}
   </h1>
   <span class="my-2">${data.author}</span>
@@ -61,9 +61,9 @@ export const createNewsMarkup = function (data) {
     !data.url
       ? ``
       : ` <button
-  class="w-max absolute text-gray-900 font-bold bg-slate-50 rounded-xl
-  shadow-[0_25px_50px_-12px_rgba(255,255,255,.4)] py-2 px-4 justify-self-center
-  duration-150 right-3 top-1/2 -translate-y-1/2 hover:-translate-y-6 hover:bg-blue-400 active:-translate-y-1/2">
+  class="w-max absolute text-xs text-gray-900 font-bold bg-slate-50 rounded-xl
+  shadow-[0_25px_50px_-12px_rgba(255,255,255,.4)] py-1 px-2 justify-self-center
+  duration-150 right-3 top-1/2 -translate-y-1/2 hover:-translate-y-6 hover:bg-blue-400 active:-translate-y-1/2 sm:py-2 sm:px-4 lg:text-md">
   <a href="${data.url}" target="_blank">Open</a>
   </button>`
   }
