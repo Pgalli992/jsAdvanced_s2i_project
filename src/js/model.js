@@ -25,11 +25,11 @@ const timeConverter = function (timeInMS) {
 
 // Creating new objecy to store result information
 const createObj = (data) => ({
-  author: data?.by,
-  id: data?.id,
-  time: timeConverter(data?.time),
-  title: data?.title,
-  url: data?.url,
+  author: _.get(data, "by", "Unknown Author"),
+  id: _.get(data, "id", "Unknown ID"),
+  time: timeConverter(_.get(data, "time", 0)),
+  title: _.get(data, "title", "No Title"),
+  url: _.get(data, "url", "#"),
 });
 
 // Loading spinner
