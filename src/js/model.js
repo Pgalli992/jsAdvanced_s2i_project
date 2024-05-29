@@ -29,7 +29,7 @@ const createObj = (data) => ({
   id: _.get(data, "id", "Unknown ID"),
   time: timeConverter(_.get(data, "time", 0)),
   title: _.get(data, "title", "No Title"),
-  url: _.get(data, "url", "#"),
+  url: _.get(data, "url", ""),
 });
 
 // Loading spinner
