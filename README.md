@@ -56,7 +56,6 @@ Per ognuna delle notizie è stato aggiunto, ove presente, un bottone che permett
     │   └── js
     │       ├── index.js
     │       └── model.js
-    ├── .env
     ├── tailwind.config.js
     └── webpack.config.js
 ```
