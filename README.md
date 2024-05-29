@@ -42,14 +42,6 @@ Per ognuna delle notizie è stato aggiunto, ove presente, un bottone che permett
 ```sh
 └── jsAdvanced_s2i_project/
     ├── README.md
-    ├── dist
-    │   ├── bundle.js
-    │   ├── bundle.js.LICENSE.txt
-    │   ├── img
-    │   │   ├── favicon.png
-    │   │   └── hacker_logo.png
-    │   ├── index.html
-    │   └── main.css
     ├── index.html
     ├── package-lock.json
     ├── package.json
