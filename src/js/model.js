@@ -106,7 +106,6 @@ export const renderNews = function (array) {
           timeout(process.env.TIMER_SEC),
         ]);
         const data = res.data;
-        console.log(data);
         // Filling state object with data
         if (!data) return;
         state.info = createObj(data);
